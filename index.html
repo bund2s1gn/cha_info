@@ -579,17 +579,6 @@
                 volumeLevel.style.width = (volumeValue * 100) + '%';
             });
         }
-
-        // [자동 재생 꼼수] 첫 클릭 시 음악 시작
-        window.addEventListener('click', () => {
-            if (player && player.getPlayerState() !== YT.PlayerState.PLAYING) {
-                player.unMute();
-                player.setVolume(50);
-                player.playVideo();
-                if (musicBtn) musicBtn.innerText = '⏸';
-                if (volumeLevel) volumeLevel.style.width = '50%';
-            }
-        }, { once: true });
     }
 
     // 4. 클릭 사운드 함수
@@ -764,19 +753,6 @@
         }, 1400);
         setTimeout(() => { if (topNav) topNav.style.opacity = '1'; }, 1500);
     };
-
-    window.addEventListener('click', () => {
-        if (player && player.getPlayerState) {
-            player.pauseVideo(); 
-            setTimeout(() => {
-               // 버튼을 누르기 전까지는 다시 일시정지 상태 유지
-               const musicBtn = document.getElementById('music-toggle-btn');
-               if (musicBtn && musicBtn.innerText !== 'PLAYING') {
-                   player.pauseVideo();
-               }
-            }, 100); 
-        }
-    }, { once: true });
 </script>
 
 </body>
